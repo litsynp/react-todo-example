@@ -11,7 +11,7 @@ interface TodoItemProps {
 }
 
 const TodoItem = ({ todo, onToggle, onDelete }: TodoItemProps) => {
-  const [completed, setCompleted] = useState(false);
+  const [completed, setCompleted] = useState(todo.completed);
 
   useEffect(() => {
     setCompleted(todo.completed);

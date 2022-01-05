@@ -6,18 +6,17 @@ interface TodoCheckboxProps {
 }
 
 const TodoCheckbox = ({ completed, onToggle }: TodoCheckboxProps) => {
+  const [completeIcon, setCompleteIcon] = useState(' ');
   const getCompleteIcon = (completed: boolean) => (completed ? 'x' : ' ');
-  const [completeIcon, setCompleteIcon] = useState(getCompleteIcon(completed));
 
-  const onToggleCheckbox = () => {
-    onToggle();
+  useEffect(() => {
     setCompleteIcon(getCompleteIcon(completed));
-  };
+  }, [completed]);
 
   return (
     <span
       className="flex justify-between w-10 cursor-pointer select-none mr-3"
-      onClick={onToggleCheckbox}
+      onClick={onToggle}
     >
       <span>[</span>
       <span>{completeIcon}</span>

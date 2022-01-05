@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react';
-
 import { Todo } from 'utils/types';
-import { mockTodoList } from 'utils/mockData';
 import TodoItem from 'molecules/TodoItem';
 
 interface TodoListProps {

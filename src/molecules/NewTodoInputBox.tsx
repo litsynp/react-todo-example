@@ -8,7 +8,9 @@ const NewTodoInputBox = ({ onSubmit }: NewTodoInputBoxProps) => {
   const [clicked, setClicked] = useState(false);
   const [input, setInput] = useState('');
 
-  const onClick = () => setClicked(!clicked);
+  const onClick = () => {
+    setClicked(!clicked);
+  };
 
   const onClickAdd = () => {
     if (input !== '') {
