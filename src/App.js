@@ -1,9 +1,9 @@
-import TodoList from 'organisms/TodoList';
+import TodoCard from 'organisms/TodoCard';
 
 function App() {
   return (
-    <div className="App">
-      <TodoList />
+    <div>
+      <TodoCard />
     </div>
   );
 }
