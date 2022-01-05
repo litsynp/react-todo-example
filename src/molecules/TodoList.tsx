@@ -1,5 +1,6 @@
 import { Todo } from 'utils/types';
 import TodoItem from 'molecules/TodoItem';
+import React from 'react';
 
 interface TodoListProps {
   todoList: Todo[];
@@ -22,4 +23,4 @@ const TodoList = ({ todoList, onToggle, onDelete }: TodoListProps) => {
   );
 };
 
-export default TodoList;
+export default React.memo(TodoList);

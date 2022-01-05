@@ -1,7 +1,10 @@
+import React from 'react';
+import { useCallback } from 'react';
+
 const TodoTitle = () => {
-  const refreshPage = () => {
+  const refreshPage = useCallback(() => {
     window.location.reload();
-  };
+  }, []);
 
   return (
     <div
@@ -13,4 +16,4 @@ const TodoTitle = () => {
   );
 };
 
-export default TodoTitle;
+export default React.memo(TodoTitle);

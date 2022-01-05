@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 interface NewTodoInputBoxProps {
   onSubmit: (text: string) => void;
@@ -8,11 +8,11 @@ const NewTodoInputBox = ({ onSubmit }: NewTodoInputBoxProps) => {
   const [clicked, setClicked] = useState(false);
   const [input, setInput] = useState('');
 
-  const onClick = () => {
+  const onClick = useCallback(() => {
     setClicked(!clicked);
-  };
+  }, [clicked]);
 
-  const onClickAdd = () => {
+  const onClickAdd = useCallback(() => {
     if (input !== '') {
       setClicked(false);
       setInput('');
@@ -20,26 +20,29 @@ const NewTodoInputBox = ({ onSubmit }: NewTodoInputBoxProps) => {
     } else {
       alert('Please enter something!');
     }
-  };
+  }, [clicked, input, onSubmit]);
 
-  const onClickCancel = () => {
+  const onClickCancel = useCallback(() => {
     setClicked(false);
     setInput('');
-  };
+  }, [clicked, input]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleKeyDownOnTodo = (e: React.KeyboardEvent<any>) => {
-    switch (e.key) {
-      case 'Enter':
-        onClickAdd();
-        break;
-      case 'Esc':
-      case 'Escape':
-        onClickCancel();
-        break;
-      default:
-    }
-  };
+  const handleKeyDownOnTodo = useCallback(
+    (e: React.KeyboardEvent<any>) => {
+      switch (e.key) {
+        case 'Enter':
+          onClickAdd();
+          break;
+        case 'Esc':
+        case 'Escape':
+          onClickCancel();
+          break;
+        default:
+      }
+    },
+    [onClickAdd, onClickCancel],
+  );
 
   return (
     <>
@@ -75,4 +78,4 @@ const NewTodoInputBox = ({ onSubmit }: NewTodoInputBoxProps) => {
   );
 };
 
-export default NewTodoInputBox;
+export default React.memo(NewTodoInputBox);
