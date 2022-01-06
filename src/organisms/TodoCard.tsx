@@ -11,9 +11,10 @@ function TodoPage() {
 
   const onToggle = useCallback(
     async (id: number) => {
+      const todo: Todo = todoList.find((todo) => todo.id === id) as Todo;
       await TodoApi.updateTodo({
         id,
-        data: { text: todoList[id].text, completed: !todoList[id].completed },
+        data: { text: todo.text, completed: !todo.completed },
       });
 
       setTodoList(
