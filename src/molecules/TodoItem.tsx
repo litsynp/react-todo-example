@@ -30,7 +30,7 @@ const TodoItem = ({ todo, onToggle, onDelete }: TodoItemProps) => {
       <TodoCheckbox completed={completed} onClick={onClickCheckbox} />
       <span className="w-full">{todo.text}</span>
       <span className="whitespace-nowrap mr-1 text-sm text-gray-400">
-        {getDateString(todo.createdOn)}
+        {getDateString(new Date(todo.createdOn))}
       </span>
       <span className="cursor-pointer select-none ml-1" onClick={onClickDelete}>
         x

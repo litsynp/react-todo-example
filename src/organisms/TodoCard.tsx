@@ -4,41 +4,51 @@ import TodoTitle from 'molecules/TodoTitle';
 import TodoList from 'molecules/TodoList';
 import NewTodoInputBox from 'molecules/NewTodoInputBox';
 import { Todo } from 'utils/types';
-import { mockTodoList } from 'utils/mockData';
+import TodoApi from 'api/TodoApi';
 
 function TodoPage() {
   const [todoList, setTodoList] = useState<Todo[]>([]);
 
   const onToggle = useCallback(
-    (id: number) => {
+    async (id: number) => {
+      await TodoApi.updateTodo({
+        id,
+        data: { text: todoList[id].text, completed: !todoList[id].completed },
+      });
+
       setTodoList(
         todoList.map((todo) =>
           todo.id === id ? { ...todo, completed: !todo.completed } : todo,
         ),
       );
     },
-    [todoList],
+    [TodoApi, todoList],
   );
 
   const onDelete = useCallback(
-    (id: number) => {
-      setTodoList(todoList.filter((todo: Todo) => todo.id !== id));
+    async (id: number) => {
+      await TodoApi.deleteTodo(id);
+
+      const todoListResult = await TodoApi.getTodoList();
+      setTodoList(todoListResult);
     },
-    [todoList],
+    [TodoApi, todoList],
   );
 
   const onSubmit = useCallback(
-    (text: string) => {
-      setTodoList([
-        { id: 0, text, completed: false, createdOn: new Date() },
-        ...todoList,
-      ]);
+    async (text: string) => {
+      await TodoApi.createTodo({ text });
+
+      const todoListResult = await TodoApi.getTodoList();
+      setTodoList(todoListResult);
     },
-    [todoList],
+    [TodoApi, todoList],
   );
 
   useEffect(() => {
-    setTodoList(mockTodoList);
+    (async () => {
+      setTodoList(await TodoApi.getTodoList());
+    })();
   }, []);
 
   return (
