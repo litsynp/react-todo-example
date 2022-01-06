@@ -52,7 +52,7 @@ function TodoPage() {
   }, []);
 
   return (
-    <div className="border-4 border-gray-500 rounded w-full h-screen p-4">
+    <div className="border-4 border-gray-500 rounded w-full h-screen overflow-y-auto p-4">
       <TodoTitle />
       <NewTodoInputBox onSubmit={onSubmit} />
       <TodoList todoList={todoList} onToggle={onToggle} onDelete={onDelete} />
