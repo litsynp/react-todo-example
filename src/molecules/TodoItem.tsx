@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import TodoCheckbox from 'atoms/TodoCheckbox';
 import { Todo } from 'utils/types';
@@ -17,13 +17,9 @@ const TodoItem = ({ todo, onToggle, onDelete }: TodoItemProps) => {
     setCompleted(todo.completed);
   }, [todo.completed]);
 
-  const onClickCheckbox = useCallback(() => {
-    onToggle(todo.id);
-  }, [todo, onToggle]);
+  const onClickCheckbox = () => onToggle(todo.id);
 
-  const onClickDelete = useCallback(() => {
-    onDelete(todo.id);
-  }, [todo, onDelete]);
+  const onClickDelete = () => onDelete(todo.id);
 
   return (
     <div className="flex align-middle break-all text-xl border-2 rounded border-gray-700 text-gray-700 p-2 my-4">

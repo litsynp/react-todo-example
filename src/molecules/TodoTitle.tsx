@@ -1,10 +1,7 @@
 import React from 'react';
-import { useCallback } from 'react';
 
 const TodoTitle = () => {
-  const refreshPage = useCallback(() => {
-    window.location.reload();
-  }, []);
+  const refreshPage = () => window.location.reload();
 
   return (
     <div

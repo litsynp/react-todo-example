@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface TodoCheckboxProps {
   completed: boolean;
@@ -7,10 +7,7 @@ interface TodoCheckboxProps {
 
 const TodoCheckbox = ({ completed, onClick }: TodoCheckboxProps) => {
   const [completeIcon, setCompleteIcon] = useState(' ');
-  const getCompleteIcon = useCallback(
-    (completed: boolean) => (completed ? 'x' : ' '),
-    [],
-  );
+  const getCompleteIcon = (completed: boolean) => (completed ? 'x' : ' ');
 
   useEffect(() => {
     setCompleteIcon(getCompleteIcon(completed));
