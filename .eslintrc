@@ -5,10 +5,13 @@
     "@typescript-eslint"
   ],
   "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/eslint-recommended"
   ],
+  "rules": {
+    "no-extra-semi": [
+      "off"
+    ]
+  },
   "settings": {
     "import/resolver": {
       "node": {

@@ -1,4 +1,4 @@
-import { Todo } from './types';
+import { Todo } from './types'
 
 const mockTodoList: Todo[] = [
   {
@@ -13,6 +13,6 @@ const mockTodoList: Todo[] = [
     completed: false,
     createdOn: new Date(),
   },
-];
+]
 
-export { mockTodoList };
+export { mockTodoList }
