@@ -1,39 +1,32 @@
-import axios from 'axios'
-
-import { API_V1_URL } from '@/utils/constants'
+import { todoClient } from '@/api/api-client'
 import { Todo, TodoCreateDto, TodoDto, TodoUpdateDto } from '@/utils/types'
 
-export default class TodoApi {
-  static async getTodoList(): Promise<Todo[]> {
-    const result = await axios.get(`${API_V1_URL}/todos/`)
+export async function findTodos(): Promise<Todo[]> {
+  const todos = (await todoClient.get('/')).data
 
-    return result.data.map((todo: TodoDto): Todo => {
-      const { id, text, completed, created_on } = todo
-      return { id, text, completed, createdOn: created_on }
-    })
-  }
-
-  static async createTodo(data: TodoCreateDto): Promise<Todo> {
-    const result = await axios.post(`${API_V1_URL}/todos/`, data)
-
-    return result.data
-  }
-
-  static async updateTodo({
+  return todos.map(({ id, text, completed, created_on }: TodoDto) => ({
     id,
-    data,
-  }: {
-    id: number
-    data: TodoUpdateDto
-  }): Promise<Todo> {
-    const result = await axios.put(`${API_V1_URL}/todos/${id}/`, data)
+    text,
+    completed,
+    createdOn: created_on,
+  }))
+}
 
-    return result.data
-  }
+export async function createTodo(todo: TodoCreateDto): Promise<Todo> {
+  return (await todoClient.post(`/`, todo)).data
+}
 
-  static async deleteTodo(id: number) {
-    const result = await axios.delete(`${API_V1_URL}/todos/${id}/`)
+export async function editTodoById({
+  id,
+  todo,
+}: {
+  id: number
+  todo: TodoUpdateDto
+}): Promise<Todo> {
+  console.log(todo)
+  return (await todoClient.put(`/${id}/`, todo)).data
+}
 
-    return result.data
-  }
+export async function deleteTodo(id: number) {
+  return (await todoClient.delete(`/${id}/`)).data
 }

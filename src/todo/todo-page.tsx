@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import TodoApi from '@/api/todo-api'
+import { createTodo, deleteTodo, editTodoById, findTodos } from '@/api/todo-api'
 import NewTodoInputBox from '@/todo/new-todo-input-box'
 import TodoList from '@/todo/todo-list'
 import TodoTitle from '@/todo/todo-title'
@@ -11,9 +11,9 @@ export default function TodoPage() {
 
   const onToggle = async (id: number) => {
     const todo: Todo = todoList.find((todoItem) => todoItem.id === id) as Todo
-    await TodoApi.updateTodo({
+    await editTodoById({
       id,
-      data: { text: todo.text, completed: !todo.completed },
+      todo: { text: todo.text, completed: !todo.completed },
     })
 
     setTodoList(
@@ -26,22 +26,22 @@ export default function TodoPage() {
   }
 
   const onDelete = async (id: number) => {
-    await TodoApi.deleteTodo(id)
+    await deleteTodo(id)
 
-    const todoListResult = await TodoApi.getTodoList()
+    const todoListResult = await findTodos()
     setTodoList(todoListResult)
   }
 
   const onSubmit = async (text: string) => {
-    await TodoApi.createTodo({ text })
+    await createTodo({ text })
 
-    const todoListResult = await TodoApi.getTodoList()
+    const todoListResult = await findTodos()
     setTodoList(todoListResult)
   }
 
   useEffect(() => {
     ;(async () => {
-      setTodoList(await TodoApi.getTodoList())
+      setTodoList(await findTodos())
     })()
   }, [])
 
