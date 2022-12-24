@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-import { API_V1_URL } from 'utils/constants'
-import { Todo, TodoCreateDto, TodoDto, TodoUpdateDto } from 'utils/types'
+import { API_V1_URL } from '@/utils/constants'
+import { Todo, TodoCreateDto, TodoDto, TodoUpdateDto } from '@/utils/types'
 
-class TodoApi {
+export default class TodoApi {
   static async getTodoList(): Promise<Todo[]> {
     const result = await axios.get(`${API_V1_URL}/todos/`)
 
@@ -37,5 +37,3 @@ class TodoApi {
     return result.data
   }
 }
-
-export default TodoApi

@@ -5,7 +5,10 @@ interface TodoCheckboxProps {
   onClick: () => void
 }
 
-const TodoCheckbox = ({ completed, onClick }: TodoCheckboxProps) => {
+export default function TodoCheckbox({
+  completed,
+  onClick,
+}: TodoCheckboxProps) {
   const [completeIcon, setCompleteIcon] = useState(' ')
   const getCompleteIcon = (completed: boolean) => (completed ? 'x' : ' ')
 
@@ -24,5 +27,3 @@ const TodoCheckbox = ({ completed, onClick }: TodoCheckboxProps) => {
     </span>
   )
 }
-
-export default TodoCheckbox

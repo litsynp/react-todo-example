@@ -4,7 +4,7 @@ interface NewTodoInputBoxProps {
   onSubmit: (text: string) => void
 }
 
-const NewTodoInputBox = ({ onSubmit }: NewTodoInputBoxProps) => {
+export default function NewTodoInputBox({ onSubmit }: NewTodoInputBoxProps) {
   const [clicked, setClicked] = useState(false)
   const [input, setInput] = useState('')
 
@@ -72,5 +72,3 @@ const NewTodoInputBox = ({ onSubmit }: NewTodoInputBoxProps) => {
     </>
   )
 }
-
-export default React.memo(NewTodoInputBox)

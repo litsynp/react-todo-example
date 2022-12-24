@@ -1,5 +1,5 @@
-const getDateString = (dt: Date) =>
-  `${dt.getFullYear().toString().padStart(4, '0')}-${(dt.getMonth() + 1)
+export function getDateString(dt: Date) {
+  return `${dt.getFullYear().toString().padStart(4, '0')}-${(dt.getMonth() + 1)
     .toString()
     .padStart(2, '0')}-${dt.getDate().toString().padStart(2, '0')} ${dt
     .getHours()
@@ -8,5 +8,4 @@ const getDateString = (dt: Date) =>
     .getSeconds()
     .toString()
     .padStart(2, '0')}`
-
-export { getDateString }
+}

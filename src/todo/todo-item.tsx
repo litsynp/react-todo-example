@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-import TodoCheckbox from 'atoms/TodoCheckbox'
-import { Todo } from 'utils/types'
-import { getDateString } from 'utils/datetime'
+import TodoCheckbox from '@/todo/todo-checkbox'
+import { Todo } from '@/utils/types'
+import { getDateString } from '@/utils/datetime'
 
 interface TodoItemProps {
   todo: Todo
@@ -10,7 +10,7 @@ interface TodoItemProps {
   onDelete: (id: number) => void
 }
 
-const TodoItem = ({ todo, onToggle, onDelete }: TodoItemProps) => {
+export default function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
   const [completed, setCompleted] = useState(todo.completed)
 
   useEffect(() => {
@@ -34,5 +34,3 @@ const TodoItem = ({ todo, onToggle, onDelete }: TodoItemProps) => {
     </div>
   )
 }
-
-export default React.memo(TodoItem)

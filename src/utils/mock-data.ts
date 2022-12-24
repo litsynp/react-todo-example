@@ -1,6 +1,6 @@
-import { Todo } from './types'
+import { Todo } from '@/utils/types'
 
-const mockTodoList: Todo[] = [
+export const mockTodoList: Todo[] = [
   {
     id: 1,
     text: 'Learn React',
@@ -14,5 +14,3 @@ const mockTodoList: Todo[] = [
     createdOn: new Date(),
   },
 ]
-
-export { mockTodoList }
