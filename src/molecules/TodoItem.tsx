@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
-import TodoCheckbox from 'atoms/TodoCheckbox';
-import { Todo } from 'utils/types';
-import { getDateString } from 'utils/datetime';
+import TodoCheckbox from 'atoms/TodoCheckbox'
+import { Todo } from 'utils/types'
+import { getDateString } from 'utils/datetime'
 
 interface TodoItemProps {
-  todo: Todo;
-  onToggle: (id: number) => void;
-  onDelete: (id: number) => void;
+  todo: Todo
+  onToggle: (id: number) => void
+  onDelete: (id: number) => void
 }
 
 const TodoItem = ({ todo, onToggle, onDelete }: TodoItemProps) => {
-  const [completed, setCompleted] = useState(todo.completed);
+  const [completed, setCompleted] = useState(todo.completed)
 
   useEffect(() => {
-    setCompleted(todo.completed);
-  }, [todo.completed]);
+    setCompleted(todo.completed)
+  }, [todo.completed])
 
-  const onClickCheckbox = () => onToggle(todo.id);
+  const onClickCheckbox = () => onToggle(todo.id)
 
-  const onClickDelete = () => onDelete(todo.id);
+  const onClickDelete = () => onDelete(todo.id)
 
   return (
     <div className="flex align-middle break-all text-xl border-2 rounded border-gray-700 text-gray-700 p-2 my-4">
@@ -32,7 +32,7 @@ const TodoItem = ({ todo, onToggle, onDelete }: TodoItemProps) => {
         x
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(TodoItem);
+export default React.memo(TodoItem)

@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 interface TodoCheckboxProps {
-  completed: boolean;
-  onClick: () => void;
+  completed: boolean
+  onClick: () => void
 }
 
 const TodoCheckbox = ({ completed, onClick }: TodoCheckboxProps) => {
-  const [completeIcon, setCompleteIcon] = useState(' ');
-  const getCompleteIcon = (completed: boolean) => (completed ? 'x' : ' ');
+  const [completeIcon, setCompleteIcon] = useState(' ')
+  const getCompleteIcon = (completed: boolean) => (completed ? 'x' : ' ')
 
   useEffect(() => {
-    setCompleteIcon(getCompleteIcon(completed));
-  }, [completed]);
+    setCompleteIcon(getCompleteIcon(completed))
+  }, [completed])
 
   return (
     <span
@@ -22,7 +22,7 @@ const TodoCheckbox = ({ completed, onClick }: TodoCheckboxProps) => {
       <span>{completeIcon}</span>
       <span>]</span>
     </span>
-  );
-};
+  )
+}
 
-export default TodoCheckbox;
+export default TodoCheckbox

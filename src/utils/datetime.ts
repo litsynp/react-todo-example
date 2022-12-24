@@ -7,6 +7,6 @@ const getDateString = (dt: Date) =>
     .padStart(2, '0')}:${dt.getMinutes().toString().padStart(2, '0')}:${dt
     .getSeconds()
     .toString()
-    .padStart(2, '0')}`;
+    .padStart(2, '0')}`
 
-export { getDateString };
+export { getDateString }

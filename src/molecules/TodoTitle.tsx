@@ -1,7 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 const TodoTitle = () => {
-  const refreshPage = () => window.location.reload();
+  const refreshPage = () => {
+    window.location.reload()
+  }
 
   return (
     <div
@@ -10,7 +12,7 @@ const TodoTitle = () => {
     >
       <span>Plain Old Todo</span>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(TodoTitle);
+export default React.memo(TodoTitle)
