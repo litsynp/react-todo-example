@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
-import TodoTitle from 'molecules/TodoTitle'
-import TodoList from 'molecules/TodoList'
-import NewTodoInputBox from 'molecules/NewTodoInputBox'
-import { Todo } from 'utils/types'
-import TodoApi from 'api/TodoApi'
+import TodoTitle from '@/todo/todo-title'
+import TodoList from '@/todo/todo-list'
+import NewTodoInputBox from '@/todo/new-todo-input-box'
+import { Todo } from '@/utils/types'
+import TodoApi from '@/api/todo-api'
 
-function TodoPage() {
+export default function TodoPage() {
   const [todoList, setTodoList] = useState<Todo[]>([])
 
   const onToggle = async (id: number) => {
@@ -53,5 +53,3 @@ function TodoPage() {
     </div>
   )
 }
-
-export default React.memo(TodoPage)

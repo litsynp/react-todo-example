@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TodoTitle = () => {
+export default function TodoTitle() {
   const refreshPage = () => {
     window.location.reload()
   }
@@ -14,5 +14,3 @@ const TodoTitle = () => {
     </div>
   )
 }
-
-export default React.memo(TodoTitle)
