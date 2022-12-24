@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
 import TodoCheckbox from '@/todo/todo-checkbox'
-import { Todo } from '@/utils/types'
 import { getDateString } from '@/utils/datetime'
+import { Todo } from '@/utils/types'
 
 interface TodoItemProps {
   todo: Todo

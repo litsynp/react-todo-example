@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-import TodoTitle from '@/todo/todo-title'
-import TodoList from '@/todo/todo-list'
-import NewTodoInputBox from '@/todo/new-todo-input-box'
-import { Todo } from '@/utils/types'
 import TodoApi from '@/api/todo-api'
+import NewTodoInputBox from '@/todo/new-todo-input-box'
+import TodoList from '@/todo/todo-list'
+import TodoTitle from '@/todo/todo-title'
+import { Todo } from '@/utils/types'
 
 export default function TodoPage() {
   const [todoList, setTodoList] = useState<Todo[]>([])
