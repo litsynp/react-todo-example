@@ -4,7 +4,7 @@ import TodoItem from '@/todo/todo-item'
 import { Todo } from '@/utils/types'
 
 interface TodoListProps {
-  todoList: Todo[]
+  todoList: Todo[] | undefined
   onToggle: (id: number) => void
   onDelete: (id: number) => void
 }
@@ -16,7 +16,7 @@ export default function TodoList({
 }: TodoListProps) {
   return (
     <>
-      {todoList.map((todo) => (
+      {todoList?.map((todo) => (
         <TodoItem
           key={todo.id}
           todo={todo}
